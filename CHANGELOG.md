@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `mainContentBodyStyle` to provided a custom style the main content body
+- `mainContentBodyStyle` to provide a custom style for the main content body
 - Add LICENSE file
 
 ## [6.1.0] - 2026-06-06
