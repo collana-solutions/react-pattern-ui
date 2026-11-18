@@ -43,6 +43,11 @@ export interface PanelSideBarLayoutProps extends PropsWithChildren {
    * If true, exclude the sidebar menu.
    */
   excludeSibebarMenu?: boolean;
+
+  /**
+   * The style applied to the main content body.
+   */
+  mainContentBodyStyle?: React.CSSProperties;
 }
 
 export const PanelSideBarLayout = <TPanelItemId extends string, TPanelItem>(props: PanelSideBarLayoutProps) => {
@@ -56,6 +61,7 @@ export const PanelSideBarLayout = <TPanelItemId extends string, TPanelItem>(prop
     useToggleButton = false,
     useResponsiveLayout = false,
     excludeSibebarMenu = false,
+    mainContentBodyStyle,
   } = props;
 
   const { isSidebarOpen, toggleSidebar, theme, renderFirstItemsLevelAsTiles, menuItems, activePanelId, mainContentBodyRef } =
@@ -102,6 +108,7 @@ export const PanelSideBarLayout = <TPanelItemId extends string, TPanelItem>(prop
           footer={footer}
           isIconShownOnSidebarCollapse={isIconShownOnSidebarCollapse}
           mainContentBodyRef={mainContentBodyRef}
+          mainContentBodyStyle={mainContentBodyStyle}
         >
           {children}
         </PanelSideBarLayoutContent>

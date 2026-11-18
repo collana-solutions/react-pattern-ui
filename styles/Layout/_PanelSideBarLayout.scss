@@ -49,7 +49,7 @@ section.content:first-of-type {
   position: relative;
 
   &.exclude-sidebar-menu {
-    margin-left: 0rem;
+    margin-left: 0rem !important;
   }
 }
 

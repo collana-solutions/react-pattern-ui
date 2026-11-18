@@ -1,20 +1,22 @@
 import classNames from "classnames";
-import { PropsWithChildren, ReactNode } from "react";
+import { CSSProperties, PropsWithChildren, ReactNode, RefObject } from "react";
 
 interface PanelSideBarLayoutContentProps extends PropsWithChildren {
   footer?: ReactNode;
   isIconShownOnSidebarCollapse: boolean;
   excludeSibebarMenu: boolean;
-  mainContentBodyRef?: React.RefObject<HTMLElement | null>;
+  mainContentBodyRef?: RefObject<HTMLElement | null>;
+  mainContentBodyStyle?: CSSProperties;
 }
 
 export const PanelSideBarLayoutContent = (props: PanelSideBarLayoutContentProps) => {
-  const { children, footer, isIconShownOnSidebarCollapse, excludeSibebarMenu, mainContentBodyRef } = props;
+  const { children, footer, isIconShownOnSidebarCollapse, excludeSibebarMenu, mainContentBodyRef, mainContentBodyStyle } = props;
 
   return (
     <section
       ref={mainContentBodyRef}
       id="main-content-body"
+      style={mainContentBodyStyle}
       className={classNames("content", { "show-icons": isIconShownOnSidebarCollapse }, { "exclude-sidebar-menu": excludeSibebarMenu })}
     >
       <main className="container-fluid">{children}</main>
