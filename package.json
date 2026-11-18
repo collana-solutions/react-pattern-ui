@@ -4,7 +4,7 @@
   "description": "Some basic functions and components which are needed in most of projects.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neolution-ch/react-pattern-ui"
+    "url": "git+https://github.com/collana-solutions/react-pattern-ui"
   },
   "license": "MIT",
   "author": "Neolution",
