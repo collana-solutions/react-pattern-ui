@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `margin-left` when excluding sidebar menu from the section content
+
+### Added
+
+- `mainContentBodyStyle` to provide a custom style for the main content body
 - Add LICENSE file
 
 ## [6.1.0] - 2026-06-06

@@ -9,12 +9,22 @@ import { PanelSideBarLayoutProps } from "./PanelSideBarLayout";
 export interface NavbarLayoutProps
   extends
     PropsWithChildren,
-    Pick<ComponentProps<typeof PanelSideBarLayoutContent>, "footer" | "mainContentBodyRef">,
+    Pick<ComponentProps<typeof PanelSideBarLayoutContent>, "footer" | "mainContentBodyRef" | "mainContentBodyStyle">,
     Pick<PanelSideBarLayoutProps, "useResponsiveLayout" | "navbarLeftItems" | "navbarRightItems" | "brand">,
     Pick<PanelSidebarNavbarInternalProps, "theme"> {}
 
 export const NavbarLayout = (props: NavbarLayoutProps) => {
-  const { brand, children, navbarLeftItems, navbarRightItems, footer, useResponsiveLayout = false, mainContentBodyRef, theme } = props;
+  const {
+    brand,
+    children,
+    navbarLeftItems,
+    navbarRightItems,
+    footer,
+    useResponsiveLayout = false,
+    mainContentBodyRef,
+    theme,
+    mainContentBodyStyle,
+  } = props;
 
   return (
     <>
@@ -31,6 +41,7 @@ export const NavbarLayout = (props: NavbarLayoutProps) => {
           footer={footer}
           isIconShownOnSidebarCollapse={false}
           mainContentBodyRef={mainContentBodyRef}
+          mainContentBodyStyle={mainContentBodyStyle}
         >
           {children}
         </PanelSideBarLayoutContent>
