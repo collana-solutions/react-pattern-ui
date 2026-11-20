@@ -94,8 +94,10 @@ jobs:
 
       # The peer range includes React 18. React is external to the bundle, so dist/ stays
       # as built, and the component tests pick up React 18 through the root node_modules.
+      # Exact versions, still subject to minimumReleaseAge. The change to the manifest and
+      # the lockfile stays in this job, which holds no secrets.
       - name: Switch to React 18
-        run: pnpm add --save-dev react@^18.2.0 react-dom@^18.2.0
+        run: pnpm add --save-dev react@18.3.1 react-dom@18.3.1 # zizmor: ignore[adhoc-packages] React 18 compatibility run, exact versions, no secrets in this job
 
       - name: Component tests (React 18)
         working-directory: cypress
