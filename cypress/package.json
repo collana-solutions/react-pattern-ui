@@ -5,8 +5,8 @@
   "scripts": {
     "build": "next build",
     "cy": "cypress",
-    "cyo": "yarn cy open",
-    "cyr": "yarn cy run --component",
+    "cyo": "pnpm run cy open",
+    "cyr": "pnpm run cy run --component",
     "dev": "next dev",
     "lint": "eslint --cache",
     "start": "next start"
