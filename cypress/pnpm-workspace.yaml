@@ -1,0 +1,19 @@
+# The component tests are a pnpm project of their own, with their own lockfile, so that the
+# published package at the repository root stays a single-package workspace. They import the
+# built package through `link:../dist` and share React with the root through `link:`.
+
+# Dependencies allowed to run install/build scripts. pnpm blocks every other one and
+# fails the install when a dependency with a build script is not listed here.
+allowBuilds:
+  # Its postinstall downloads the Cypress binary that runs the tests.
+  cypress: true
+  unrs-resolver: true
+
+# Reject package versions published less than 14 days ago (14 * 24 * 60 = 20160 minutes).
+# Mitigates supply-chain attacks by giving freshly published (potentially malicious) versions
+# time to be detected and pulled before they can be installed.
+minimumReleaseAge: 20160
+
+# Fail the install rather than silently recording an exception. Without this, pnpm appends
+# offending versions to minimumReleaseAgeExclude by itself.
+minimumReleaseAgeStrict: true

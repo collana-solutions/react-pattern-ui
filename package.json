@@ -1,5 +1,5 @@
 {
-  "name": "@neolution-ch/react-pattern-ui",
+  "name": "@collana-solutions/react-pattern-ui",
   "version": "6.2.0",
   "description": "Some basic functions and components which are needed in most of projects.",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "git+https://github.com/collana-solutions/react-pattern-ui"
   },
   "license": "MIT",
-  "author": "Neolution",
+  "author": "collana solutions AG",
   "sideEffects": false,
   "exports": {
     "./package.json": "./package.json",
@@ -33,29 +33,34 @@
     "dist"
   ],
   "scripts": {
-    "build": "yarn clean-dist && yarn build-lib && yarn copy-sass",
+    "build": "pnpm run clean-dist && pnpm run build-lib && pnpm run copy-sass",
     "build-lib": "rollup -c",
     "clean-dist": "shx rm -rf dist",
     "copy-sass": "shx cp -r styles dist/scss",
     "lint": "eslint --cache",
-    "prepack": "yarn build",
-    "prepare-pr": "yarn prettier . --write && yarn lint && yarn build",
+    "prepack": "pnpm run build",
+    "prepare-pr": "pnpm exec prettier . --write && pnpm run lint && pnpm run build",
     "prettier-check": "prettier --check .",
     "start": "rollup -c -w",
-    "start-all": "concurrently \"yarn start\" \"yarn start-yalc\"",
-    "start-yalc": "yarn nodemon --watch dist -x \"yarn yalc push\"",
-    "tsc": "tsc"
+    "start-all": "concurrently \"pnpm run start\" \"pnpm run start-yalc\"",
+    "start-yalc": "nodemon --watch dist -x \"yalc push\"",
+    "tsc": "tsc",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish"
   },
   "dependencies": {
     "classnames": "^2.5.1"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.2.0",
     "@neolution-ch/eslint-config-neolution": "2.3.0",
+    "@neolution-ch/reactstrap": "^10.0.0",
     "@popperjs/core": "^2.11.8",
-    "@release-it/keep-a-changelog": "^7.0.1",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
@@ -67,11 +72,10 @@
     "cross-env": "^10.1.0",
     "eslint": "^9.18.0",
     "nodemon": "^3.1.11",
+    "pkg-pr-new": "^0.0.93",
     "prettier": "^3.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@neolution-ch/reactstrap": "^10.0.0",
-    "release-it": "^19.2.4",
     "rollup": "^4.57.1",
     "rollup-plugin-import-css": "^4.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -96,5 +100,6 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "packageManager": "pnpm@11.22.0"
 }
