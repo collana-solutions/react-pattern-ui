@@ -17,3 +17,9 @@ minimumReleaseAge: 20160
 # Fail the install rather than silently recording an exception. Without this, pnpm appends
 # offending versions to minimumReleaseAgeExclude by itself.
 minimumReleaseAgeStrict: true
+
+# Our own packages skip the waiting period. They publish only through trusted publishing
+# or by a maintainer with 2FA, so a fresh version is not the unknown the floor guards against,
+# and a library that depends on another one of ours can take its release right away.
+minimumReleaseAgeExclude:
+  - "@collana-solutions/*"

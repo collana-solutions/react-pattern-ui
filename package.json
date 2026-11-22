@@ -55,11 +55,11 @@
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",
     "@changesets/cli": "^3.0.3",
+    "@collana-solutions/eslint-config": "^3.1.1",
+    "@collana-solutions/reactstrap": "^10.0.1",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.2.0",
-    "@neolution-ch/eslint-config-neolution": "2.3.0",
-    "@neolution-ch/reactstrap": "^10.0.0",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
@@ -70,7 +70,8 @@
     "bootstrap": "^5.3.8",
     "concurrently": "^9.2.1",
     "cross-env": "^10.1.0",
-    "eslint": "^9.18.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-prettier": "^5.5.7",
     "nodemon": "^3.1.11",
     "pkg-pr-new": "^0.0.93",
     "prettier": "^3.8.1",
@@ -92,7 +93,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18 || ^0.2.0 || ^3.0.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
-    "@neolution-ch/reactstrap": "^10.0.0"
+    "@collana-solutions/reactstrap": "^10.0.1"
   },
   "engines": {
     "node": ">=16"
