@@ -1,3 +1,3 @@
-import neolutionEslintConfig from "@neolution-ch/eslint-config-neolution";
+import collanaEslintConfig from "@collana-solutions/eslint-config";
 
-export default [...neolutionEslintConfig.configs.flat.cypress];
+export default [...collanaEslintConfig.configs.flat.cypress];

@@ -11,15 +11,15 @@ import { faBars, faCogs, faInfo, faHome, faPerson } from "@fortawesome/free-soli
 import { mount } from "cypress/react";
 
 type AppRoutes = "home" | "settings" | "dropdownTest" | "dropdown-test1" | "dropdown-test2" | "info";
-type TSideBarMenuItem = PanelItem<AppRoutes>;
+type TSidebarMenuItem = PanelItem<AppRoutes>;
 
 // Configuration object for avoiding duplicated code
-interface PanelSideBarConfiguration extends PropsWithChildren {
+interface PanelSidebarConfiguration extends PropsWithChildren {
   renderFirstItemsLevelAsTiles?: boolean;
   useToggleButton?: boolean;
 }
 
-const getPanelSidebarInternal = (items: TSideBarMenuItem[], config?: PanelSideBarConfiguration) => {
+const getPanelSidebarInternal = (items: TSidebarMenuItem[], config?: PanelSidebarConfiguration) => {
   const { renderFirstItemsLevelAsTiles = true, useToggleButton = false, children } = config ?? {};
   return (
     <PanelSideBarProvider
@@ -51,7 +51,7 @@ const getSidebarItems = (
   disabled?: boolean,
   expanded?: boolean,
   onSidebarCollapseOptions?: PanelItemOnSideBarCollapseOptions,
-): TSideBarMenuItem[] => [
+): TSidebarMenuItem[] => [
   {
     id: "home",
     title: "Home",
@@ -117,26 +117,26 @@ const getSidebarItems = (
   },
 ];
 
-interface PanelSideBarProps extends PropsWithChildren {
+interface PanelSidebarProps extends PropsWithChildren {
   active?: boolean;
   disabled?: boolean;
   expanded?: boolean;
   onSidebarCollapseOptions?: PanelItemOnSideBarCollapseOptions;
 }
 
-const PanelSideBarWithTiles = (props: PanelSideBarProps) => {
+const PanelSidebarWithTiles = (props: PanelSidebarProps) => {
   const { active, disabled, expanded, onSidebarCollapseOptions, children } = props;
   return getPanelSidebarInternal(getSidebarItems(active, disabled, expanded, onSidebarCollapseOptions), { children });
 };
 
-const PanelSideBarNoTiles = (props: PanelSideBarProps) => {
+const PanelSidebarNoTiles = (props: PanelSidebarProps) => {
   const { active, disabled } = props;
   return getPanelSidebarInternal(getSidebarItems(active, disabled), { renderFirstItemsLevelAsTiles: false, useToggleButton: true });
 };
 
 describe("PanelSidebar.cy.tsx", () => {
   it("icon and titles rendered correctly", () => {
-    mount(<PanelSideBarWithTiles />);
+    mount(<PanelSidebarWithTiles />);
 
     // Check if icon are rendered
     cy.get('[data-icon="bars"]').should("be.visible");
@@ -149,7 +149,7 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("flat menu entry", () => {
-    mount(<PanelSideBarWithTiles />);
+    mount(<PanelSidebarWithTiles />);
 
     // Check page content changes
     cy.get("#home").click();
@@ -160,7 +160,7 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("nested menu entries", () => {
-    mount(<PanelSideBarWithTiles />);
+    mount(<PanelSidebarWithTiles />);
 
     // Check page content changes
     cy.get("button[title=Settings]").click();
@@ -173,7 +173,7 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("disabled entries", () => {
-    mount(<PanelSideBarWithTiles disabled />);
+    mount(<PanelSidebarWithTiles disabled />);
 
     // Check are disabled and page content not doesn't change
     cy.get("button[title=Home]").should("have.attr", "disabled");
@@ -185,7 +185,7 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("toggle sidebar", () => {
-    mount(<PanelSideBarWithTiles />);
+    mount(<PanelSidebarWithTiles />);
 
     // Check toggle sidebar
     cy.get('[data-icon="angle-left"]').should("be.visible");
@@ -196,26 +196,26 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("selected flat entry", () => {
-    mount(<PanelSideBarWithTiles active />);
+    mount(<PanelSidebarWithTiles active />);
 
     // Check active entries
     cy.get("#home").parent("div").parent("li").should("have.class", "active");
   });
 
   it("render correctly menu without tiles", () => {
-    mount(<PanelSideBarNoTiles />);
+    mount(<PanelSidebarNoTiles />);
     cy.get("#main-section").should("have.class", "section-no-tiles");
     cy.get(".side.nav__tiles").should("not.exist");
   });
 
   it("render correctly toggle button", () => {
-    mount(<PanelSideBarNoTiles />);
+    mount(<PanelSidebarNoTiles />);
     cy.get("#sidebar-toggle").click();
     cy.get("#side-nav").should("have.css", "width", "0px");
   });
 
   it("check dropdown correctly pre-expanded", () => {
-    mount(<PanelSideBarWithTiles expanded />);
+    mount(<PanelSidebarWithTiles expanded />);
     cy.get("button[title=Settings]").click();
     cy.get("#dropdown-test1").should("be.visible");
     cy.get("#dropdown-test2").should("be.visible");
@@ -232,9 +232,9 @@ describe("PanelSidebar.cy.tsx", () => {
     };
 
     mount(
-      <PanelSideBarWithTiles expanded>
+      <PanelSidebarWithTiles expanded>
         <Button />
-      </PanelSideBarWithTiles>,
+      </PanelSidebarWithTiles>,
     );
     cy.get("button[title=Settings]").click();
     cy.get("li:has(.dropdown-toggle)").should("be.visible").should("have.class", "menu-open");
@@ -255,9 +255,9 @@ describe("PanelSidebar.cy.tsx", () => {
     };
 
     mount(
-      <PanelSideBarWithTiles expanded>
+      <PanelSidebarWithTiles expanded>
         <Button />
-      </PanelSideBarWithTiles>,
+      </PanelSidebarWithTiles>,
     );
     cy.get("button[title=Settings]").click();
     cy.get("#dropdown-test1").should("be.visible");
@@ -283,9 +283,9 @@ describe("PanelSidebar.cy.tsx", () => {
     };
 
     mount(
-      <PanelSideBarWithTiles>
+      <PanelSidebarWithTiles>
         <Button />
-      </PanelSideBarWithTiles>,
+      </PanelSidebarWithTiles>,
     );
     cy.get("button[title=Settings]").click();
     cy.get("li:has(.dropdown-toggle)").should("be.visible").should("not.have.class", "menu-open");
@@ -296,7 +296,7 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("check hidden panel", () => {
-    mount(<PanelSideBarWithTiles />);
+    mount(<PanelSidebarWithTiles />);
 
     cy.get("button[title=Settings]").should("be.visible");
     cy.get("button[title=Home]").should("be.visible");
@@ -304,7 +304,7 @@ describe("PanelSidebar.cy.tsx", () => {
   });
 
   it("toggle sidebar with visible icons", () => {
-    mount(<PanelSideBarWithTiles onSidebarCollapseOptions={{ showIcon: true }} />);
+    mount(<PanelSidebarWithTiles onSidebarCollapseOptions={{ showIcon: true }} />);
     cy.get('[data-icon="angle-left"]').should("be.visible");
     cy.get("#side-nav-toggle").click();
     cy.get('[data-icon="angle-right"]').should("be.visible");

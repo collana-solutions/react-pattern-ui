@@ -7,7 +7,7 @@ import {
   DropdownToggle,
   Row,
   UncontrolledButtonDropdown,
-} from "@neolution-ch/reactstrap";
+} from "@collana-solutions/reactstrap";
 import { ReactNode, useMemo } from "react";
 
 interface PagingProps {
